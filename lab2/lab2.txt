@@ -1,0 +1,149 @@
+>> # Task1
+>> 
+>> z1 = 3 - 5i
+z1 =  3 - 5i
+>> z2 = 3 + 6i
+z2 =  3 + 6i
+>> 
+>> sumZ = z1 + z2
+sumZ =  6 + 1i
+>> prodZ = z1 * z2
+prodZ =  39 +  3i
+>> parZ = z1 / z2
+parZ = -0.4667 - 0.7333i
+>> 
+>> real_sumZ = real(sumZ)
+real_sum = 6
+>> imag_sumZ = imag(sumZ)
+imag_sum = 1
+>> 
+>> real_prodZ = real(prodZ)
+real_prod = 39
+>> imag_prodZ = imag(prodZ)
+imag_prod = 3
+>> 
+>> real_parZ = real(parZ)
+real_par = -0.4667
+>> imag_parZ = imag(parZ)
+imag_par = -0.7333
+>> 
+>> 
+>> diary off
+>> 
+>> 
+>> # Task2
+>> 
+>> sqrtZ = sqrt(z1)
+sqrtZ =  2.1013 - 1.1897i
+>> absZ = bs(sqrtZ)
+error: 'bs' undefined near line 1, column 8
+>> absZ = abs(sqrtZ)
+absZ = 2.4147
+>> 
+>> 
+>> # Task3
+>> logZ = log(z2)
+logZ =  1.9033 + 1.1071i
+>> 
+>> 
+>> # Task4
+>> pkg load symbolic
+>> x = sym('x')
+Symbolic pkg v3.2.1: Python communication link active, SymPy v1.10.1.
+x = (sym) x
+>> y = sym('y')
+y = (sym) y
+>> 
+>> 
+>> # Task5
+>> z = x + y^2
+z = (sym)
+
+       2
+  x + y 
+
+>> 
+>> 
+>> # Task6
+>> az = z^2
+az = (sym)
+
+          2
+  /     2\ 
+  \x + y / 
+
+>> az1 = expand(az)
+az1 = (sym)
+
+   2        2    4
+  x  + 2*x*y  + y 
+
+>> 
+>> 
+>> # Task7
+>> az1_fac = factor(az1)
+az1_fac = (sym)
+
+          2
+  /     2\ 
+  \x + y / 
+
+>> 
+>> 
+>> # Task8
+>> 
+>> f = sym('f')
+f = (sym) f
+>> f = (x^2 - 3)*(x^3 + 2) + acos(1/x)
+f = (sym)
+
+  / 2    \ / 3    \       /1\
+  \x  - 3/*\x  + 2/ + acos|-|
+                          \x/
+
+>> F = sym('F')
+F = (sym) F
+>> F = diff(f, x)
+F = (sym)
+
+     2 / 2    \       / 3    \          1        
+  3*x *\x  - 3/ + 2*x*\x  + 2/ + ----------------
+                                         ________
+                                  2     /     1  
+                                 x *   /  1 - -- 
+                                      /        2 
+                                    \/        x  
+
+>> 
+>> 
+>> # Task9
+>> F1 = int(F)
+F1 = (sym)
+
+                     //       /1\       1      \
+                     ||I*acosh|-|  for ---- > 1|
+                     ||       \x/      | 2|    |
+   5      3      2   ||                |x |    |
+  x  - 3*x  + 2*x  + |<                        |
+                     ||      /1\               |
+                     || -asin|-|    otherwise  |
+                     ||      \x/               |
+                     \\                        /
+
+>> 
+>> 
+>> # Task10
+>> a = 1
+a = 1
+>> b = 3
+b = 3
+>> 
+>> F2 = int(F, a, b)
+F2 = (sym)
+
+               pi      
+  -asin(1/3) + -- + 180
+               2       
+
+>> 
+>> diary off
